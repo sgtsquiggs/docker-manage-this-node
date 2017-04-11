@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+# fetch site
+if [[ ! -d /app/.git ]]; then
+    git clone https://github.com/onedr0p/manage-this-node /app
+fi
+
+cd /app &&\
+    npm install
+
+if [[ ! -f /config/config.json ]]; then
+    cp /app/config.json.template /config/config.json
+fi
+ln -sf /config/config.json /app/config.json
